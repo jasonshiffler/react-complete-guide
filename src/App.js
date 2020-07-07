@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Radium, { StyleRoot } from 'radium'; //Need
+
 import Person from './Person/Person';
 import './App.css';
 
@@ -89,20 +89,16 @@ class App extends Component {
     }
 
     return (
-      <StyleRoot>
-        {' '}
-        {/*Need this for Radium to work with Media Queries*/}
-        <div className='App'>
-          <h1>I'm a React App</h1>
-          <p className={classes.join(' ')}>This is Working!</p>
-          <button style={style} onClick={this.togglePersonsHandler}>
-            Switch Name
-          </button>
-          {persons}
-        </div>
-      </StyleRoot>
+      <div className='App'>
+        <h1>I'm a React App</h1>
+        <p className={classes.join(' ')}>This is Working!</p>
+        <button style={style} onClick={this.togglePersonsHandler}>
+          Switch Name
+        </button>
+        {persons}
+      </div>
     );
   }
 }
 
-export default Radium(App); //component wrapped in a component
+export default App;
