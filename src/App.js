@@ -2,6 +2,21 @@ import React, { Component } from 'react';
 
 import Person from './Person/Person';
 import './App.css';
+import styled from 'styled-components';
+
+const StyledButton = styled.button`
+  background-color: ${(props) => (props.alt ? 'red' : 'green')};
+  color: white;
+  font: inherit;
+  border: 1px solid blue;
+  borderradius: 3px;
+  padding: 8px;
+  cursor: pointer;
+  &:hover {
+    background-color: lightgreen;
+    color: black;
+  }
+`;
 
 class App extends Component {
   state = {
@@ -39,20 +54,6 @@ class App extends Component {
   };
 
   render() {
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      borderRadius: '3px',
-      padding: '8px',
-      cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black',
-      },
-    };
-
     //Need radium for the hover feature
 
     let persons = null;
@@ -73,11 +74,6 @@ class App extends Component {
           })}
         </div>
       );
-      style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black',
-      };
     }
 
     const classes = [];
@@ -92,9 +88,13 @@ class App extends Component {
       <div className='App'>
         <h1>I'm a React App</h1>
         <p className={classes.join(' ')}>This is Working!</p>
-        <button style={style} onClick={this.togglePersonsHandler}>
+
+        <StyledButton
+          alt={this.state.showPersons}
+          onClick={this.togglePersonsHandler}
+        >
           Switch Name
-        </button>
+        </StyledButton>
         {persons}
       </div>
     );
